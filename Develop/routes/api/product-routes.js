@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
         { model: Tag }
       ]
     });
-    res.json(categories);
+    res.json(products);
     } catch (err) {
       res.status(400).json(err);
     }
@@ -32,6 +32,7 @@ router.get('/:id', async (req, res) => {
         { model: Tag }
       ]
     });
+    res.json(idProd);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -117,6 +118,7 @@ router.delete('/:id', async (req, res) => {
     const delProd = await Product.destroy({
       where: { id: req.params.id }
     })
+    res.json(delProd);
   } catch (err) {
     res.status(400).json(err);
   }
