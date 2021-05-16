@@ -26,7 +26,7 @@ router.get('/:id', async (req, res) => {
         { model: Product }
       ]
     });
-    res.json(categories);
+    res.json(category);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -45,7 +45,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   // update a category by its `id` value
   try {
-    const updCat = await Category.update({category_name: req.body}, { where: { id: req.params.id } });
+    const updCat = await Category.update(req.body, { where: { id: req.params.id } });
     res.json(updCat);
   } catch (err) {
     res.status(400).json(err);
